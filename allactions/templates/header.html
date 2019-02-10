@@ -1,0 +1,48 @@
+{% block header %}
+
+<header>
+
+
+
+
+    <nav class="navbar navbar-inverse" >
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">SofServe</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+<ul class="nav nav-tabs">
+     {% for section in sections %}
+         <li class="active"><a href="{% url 'section_page' section_id=section.id %}">{{ section.section }}</a></li>
+     {% endfor %}
+</ul>
+
+
+
+
+
+    <div class="tab-content">
+        {% for section in sections %}
+            {% if section.id == 1 %}
+                <div class="tab-pane fade in active " id="{{section.id}}">
+                    {% include 'stepper.html' %}
+                </div>
+            {% elif section.id != 1 %}
+                <div class="tab-pane fade" id="{{ section.id }}">
+                    {% include 'stepper.html' %}
+                </div><!--/.tab-pane -->
+            {% endif %}
+        {% endfor %}
+    </div>
+</header>
+
+{% endblock %}

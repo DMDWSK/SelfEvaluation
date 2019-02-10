@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/* Do not copy below line */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Do not copy above line */
+@font-face {
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
+.s-stepper-content .s-stepper-stage {
+  display: none;
+  padding: 15px 22px;
+  box-shadow: 0 2px 4px 0px #aaa;
+  background-color: #fff;
+}
+.s-stepper-content .s-stepper-stage.active {
+  display: grid;
+}
+
+.s-stepper {
+  display: flex;
+  box-shadow: 0 2px 4px 0px #aaa;
+  counter-reset: section;
+  background-color: #fff;
+}
+.s-stepper .s-step {
+  display: flex;
+  flex: 1;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.s-stepper .s-step:first-child:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: none;
+  border-bottom: none;
+}
+.s-stepper .s-step.active {
+  position: relative;
+  background-color: rgba(0, 128, 0, 0.74);
+  color: rgba(255, 255, 255, 0.7);
+  border-color: #2a2a2a;
+
+
+}
+
+.s-stepper .s-step.done {
+   background-color: green;
+ }
+.s-stepper .s-step.active:last-child:after {
+  border: none;
+}
+.s-stepper .s-step.active:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: -50px;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid green;
+  transition: all 900ms ease-in-out;
+}
+.s-stepper .s-step.active .s-step-counter:after {
+  content: "";
+  font-family: FontAwesome;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+}
+.s-stepper .s-step.done .s-step-counter:after {
+  content: "";
+  font-family: FontAwesome;
+  border-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+}
+.s-stepper .s-step .s-step-counter:after {
+  counter-increment: section;
+  content: counter(section);
+  display: flex;
+  font-size: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  width: 45px;
+  height: 45px;
+  justify-content: center;
+  border-radius: 999px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+  .s-step small {
+    display: none;
+  }
+  .s-step.active:after {
+    border-top: 41px solid transparent !important;
+    border-bottom: 41px solid transparent !important;
+    border-left: 40px solid green !important;
+    margin-right: -40px !important;
+  }
+  .s-step.active:last-child:after {
+    border: none !important;
+    background-color: #2a2a2a;
+
+  }
+}
+@media screen and (max-width: 550px) {
+  .s-stepper {
+    display: none;
+  }
+
+
+}
