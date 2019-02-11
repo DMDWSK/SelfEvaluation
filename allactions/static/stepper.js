@@ -1,5 +1,4 @@
 function hideStage(stage){
-	// you can validate here
 	$('#stage'+stage).removeClass('active');
 	$('#stage-'+stage+'-step').addClass('done');
 }
@@ -9,9 +8,6 @@ function showStage(stage) {
 	$('#stage-'+stage+'-step').removeClass('done');
 	$('#stage'+stage).addClass('active');
 	$('#stage-'+stage+'-step').addClass('active');
-
-
-
 }
 
 function removeActiveStage(stage) {
@@ -22,6 +18,5 @@ function removeActiveStage(stage) {
 }
 
 $(document).ready(function(){
-	
 })
 

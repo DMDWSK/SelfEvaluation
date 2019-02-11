@@ -2,23 +2,20 @@
 
 <header>
 
+<nav class="navbar navbar-inverse" >
+    <div class="container-fluid">
+        <div class="navbar-header">
 
-
-
-    <nav class="navbar navbar-inverse" >
-        <div class="container-fluid">
-
-            <div class="navbar-header">
-
-                <a class="navbar-brand" href="#">SofServe</a>
-            </div>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-            </ul>
-
+            <a class="navbar-brand" href="#">SofServe</a>
         </div>
-    </nav>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ user.username }}</a></li>
+            <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
 
 <ul class="nav nav-tabs">
      {% for section in sections %}
@@ -26,23 +23,19 @@
      {% endfor %}
 </ul>
 
-
-
-
-
-    <div class="tab-content">
-        {% for section in sections %}
-            {% if section.id == 1 %}
-                <div class="tab-pane fade in active " id="{{section.id}}">
-                    {% include 'stepper.html' %}
-                </div>
-            {% elif section.id != 1 %}
-                <div class="tab-pane fade" id="{{ section.id }}">
-                    {% include 'stepper.html' %}
-                </div><!--/.tab-pane -->
-            {% endif %}
-        {% endfor %}
-    </div>
+<div class="tab-content">
+    {% for section in sections %}
+        {% if section.id == 1 %}
+            <div class="tab-pane fade in active " id="{{section.id}}">
+                {% include 'stepper.html' %}
+            </div>
+        {% elif section.id != 1 %}
+            <div class="tab-pane fade" id="{{ section.id }}">
+                {% include 'stepper.html' %}
+            </div><!--/.tab-pane -->
+        {% endif %}
+    {% endfor %}
+</div>
 </header>
 
 {% endblock %}

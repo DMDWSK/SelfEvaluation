@@ -1,0 +1,37 @@
+{% block table %}
+
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+     <tr>
+       <th>#</th>
+       <th></th>
+       <th>Like to do?</th>
+       <th>What is level?</th>
+      </tr>
+    <tbody>
+       <tr>
+           <th scope="row" width=5%>{{ question.id }}</th>
+           <td width=40%  style ="font-family:'Comic Sans MS';"> <span title="{{ question.hint }}">{{ question.question }}</span></td>
+           <td>
+               <div class="radio-buttons" >
+                  <ul class="radio-buttons">
+                      <input class="choice" type="radio" name="choice-{{ question.id }}" value="yes">Yes
+                      <input class="choice" type="radio" name="choice-{{ question.id }}" value="no">No
+                  </ul>
+               </div>
+           </td>
+           <td width=20%>
+               <select name="select_box">
+                {% for grade in grades %}
+                    <option>{{ grade.grade }}</option>
+                {% endfor %}
+                </select>
+           </td>
+       </tr>
+    </tbody>
+    </thead>
+  </table>
+
+{% endblock %}

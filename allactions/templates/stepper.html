@@ -1,65 +1,66 @@
 {% block stepper %}
 <div class="s-stepper">
-     {% for stage in stages %}
+ {% for stage in stages %}
 
-        {% if forloop.counter == 1 %}
-            <div data-target="#stage{{ stage.id }}" id="stage-{{stage.id}}-step" class="s-step active">
-                <span class="s-step-counter"></span>
-                <small>{{ stage.stage }}</small>
-            </div>
+    {% if forloop.counter == 1 %}
+        <div data-target="#stage{{ stage.id }}" id="stage-{{stage.id}}-step" class="s-step active">
+            <span class="s-step-counter"></span>
+            <small>{{ stage.stage }}</small>
+        </div>
 
-          {% elif forloop.counte != 1 %}
-            <div data-target="#stage{{ stage.id }}" id="stage-{{stage.id}}-step" class="s-step">
-                <span class="s-step-counter"></span>
-                <small>{{ stage.stage }}</small>
-            </div>
-        {% endif %}
-     {% endfor %}
+      {% elif forloop.counter != 1 %}
+        <div data-target="#stage{{ stage.id }}" id="stage-{{stage.id}}-step" class="s-step">
+            <span class="s-step-counter"></span>
+            <small>{{ stage.stage }}</small>
+        </div>
+    {% endif %}
+ {% endfor %}
 </div>
 
 <div class="s-stepper-content">
-
-{% for stage in stages  %}
-    {% if forloop.counter == 1 %}
-        <div id="stage{{ forloop.counter }}" class="s-stepper-stage active">
-
+{% block body %}
+      <form role="form" action="" method="post">
+        <div class="form-group">
+     {% csrf_token %}
+    {% for stage in stages  %}
+         {% if forloop.counter == 1 %}
+            <div id="stage{{ stage.id }}" class="s-stepper-stage active">
                 {% for question in questions %}
-
                     {% if question.stage_id == stage.id %}
-                       <form role="form" action="" method="post" id="formid">
                         <div class="tab-content">
-                             {% include 'questions.html ' %}
-                         </div>
-                       </form>
-                    {% endif %}
-                {% endfor  %}
+                             {% include 'table.html ' %}
+                        </div>
+         {% endif %}
+    {% endfor  %}
 
-            <div style="float: right">
-                <button onclick="hideStage({{ stage.id }});showStage({{ stage.id }}+1)">Next <i class="fa fa-right"></i></button>
-            </div>
+        <div style="float: right">
+            <button type="button" onclick="hideStage({{ stage.id }});showStage({{ stage.id }}+1)">Next <i class="fa fa-right"></i></button>
         </div>
-
-
+            </div>
 
 {% elif  forloop.counter != 1 %}
-  <div id="stage{{ stage.id }}" class="s-stepper-stage">
-            {% for question in questions %}
-                {% if question.stage_id == stage.id %}
-                   <form role="form" action="" method="post" id="formid">
-                                           {% csrf_token %}
-                     <div class="tab-content">
-                         {% include 'questions.html ' %}
-                     </div>
-                   </form>
-                {% endif %}
-            {% endfor  %}
+<div id="stage{{ stage.id }}" class="s-stepper-stage">
+    {% for question in questions %}
+        {% if question.stage_id == stage.id %}
+             <div class="tab-content">
+                 {% include 'table.html ' %}
+             </div>
+        {% endif %}
+    {% endfor  %}
     <div style="float: right">
-    <button onclick=" removeActiveStage({{ stage.id }});showStage({{ stage.id }}-1)  "> Previous</button>
-        <button onclick="hideStage({{ stage.id }});showStage({{ stage.id }}+1)">Next </button>
+        <button type="button" onclick=" removeActiveStage({{ stage.id }});showStage({{ stage.id }}-1)"> Previous</button>
+        {%  if forloop.counter == stages|length %}
+            <button type="submit" onclick="hideStage({{ stage.id }});showStage({{ stage.id }}+1)">Submit </button>
+        {% else %}
+            <button type="button" onclick="hideStage({{ stage.id }});showStage({{ stage.id }}+1)">Next</button>
+        {%  endif %}
     </div>
-  </div>
+ </div>
 
 {% endif %}
-{% endfor %}
+    {% endfor %}
+    </div>
+  </form>
+    {% endblock %}
 </div>
 {% endblock %}

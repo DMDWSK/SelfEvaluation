@@ -13,8 +13,6 @@ class Sections(models.Model):
         db_table = "Sections"
         ordering = ['id']
     section = models.CharField(max_length=20, default=None)
-    def sectionfilter(self):
-        return Stages.objects.filter(section_id=self.id).first().id
 
 
 class Stages(models.Model):

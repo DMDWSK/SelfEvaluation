@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'finish.css' %}">
+</head>
+<body>
+<div class="plate">
+  <p class="script"><span>Thank you</span></p>
+  <p class="shadow text1">Have</p>
+  <p class="shadow text2">a</p>
+  <p class="shadow text3">nice day</p>
+  <p class="script"><span>{{ user.username }}</span></p>
+</div>
+</body>
+</html>

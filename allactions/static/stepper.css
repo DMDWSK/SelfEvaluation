@@ -29,7 +29,6 @@ body {
   background-color: #fff;
 }
 .s-stepper .s-step {
-  display: flex;
   flex: 1;
   padding: 15px;
   justify-content: center;
@@ -132,4 +131,7 @@ body {
   }
 
 
+}
+ul {
+  padding-left: 0;
 }

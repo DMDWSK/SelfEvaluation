@@ -117,6 +117,6 @@ def insert_from_file():
 # insert_table_ones('grades', 'grade', 'Beginner')
 # insert_table_ones('grades', 'grade', 'Good')
 # insert_table_ones('grades', 'grade', 'Strong')
-# insert_table_users('users', 'login', 'password', 'role_id', 'date', 'admin', 'admin', '1')
+# insert_table_users('authentication', 'login', 'password', 'role_id', 'date', 'admin', 'admin', '1')
 # insert_table_usersdata('usersdata', 'name', 'last', 'age', 'email', 'user_id', 'Andre', 'UA', 33, 'admin@ss.com', 1)
 insert_from_file()

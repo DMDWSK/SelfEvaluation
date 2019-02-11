@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'allactions.apps.AllactionsConfig',
     'roleaccess.apps.RoleaccessConfig',
-    'users.apps.UsersConfig'
-
-
+    'answers.apps.AnswersConfig',
+    'authentication.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -129,5 +128,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "allactions/static")]
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/1'
 LOGOUT_REDIRECT_URL = '/'
